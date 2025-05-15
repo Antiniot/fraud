@@ -166,17 +166,24 @@
         <input type="text" class="form-control" id="productPrice" placeholder="Product Price">
         <label for="productPrice">Product Price</label>
       </div>
-      <div class="col-12 text-center">
-        <button type="button" class="btn btn-submit-form mt-3" onclick="fetchQR()">Add the Product</button>
+      <div align="center">
+				<button type="submit" class="btn btn-warning btn-register" id="register" onclick="fetchQR()">Add the Product</button>
+			<!-- trunk-ignore(git-diff-check/error) -->
       </div>
     </div>
   </div>
 
-  <div class="qr-code-section">
-    <img id="imgQR" src="" alt="QR Code" hidden>
-    <br>
-    <button type="button" class="btn btn-warning mt-3" id="download" onclick="saveImage()" hidden>Download QR Code</button>
-  </div>
+  <div class="qr-code">
+		<div align="center">
+			<img align="center" hidden id="imgQR" src="" alt="qr-code" >
+		</div>
+		<br>
+		<div align="center">
+			<button align="center" hidden type="submit" class="btn btn-warning" id="download" onclick="saveImage()">Download QR Code</button>
+		</div>
+	</div>
+
+<br></br>
 
   <!-- Scripts -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -188,33 +195,27 @@
   <script>
     
 
-    let src = '';
-    let qrValue = '';
+    var src;
+	var qrValue;
+	function fetchQR(){
+		qrValue = document.getElementById('productSN').value;
+		qrImage = document.querySelector(".qr-code");
+		qrImageResult = qrImage.querySelector("img");
+		src = qrImageResult.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
+		
 
-    function fetchQR() {
-      qrValue = document.getElementById('productSN').value.trim();
-      if (!qrValue) {
-        alert("Please enter a Product SN to generate QR code.");
-        return;
-      }
+		downloadQrImg = document.getElementById('imgQR');
+		downloadQrBtn = document.getElementById('download');
+		downloadQrImg.removeAttribute('hidden');
+		downloadQrBtn.removeAttribute('hidden');
 
-      const qrImage = document.getElementById("imgQR");
-      src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrValue)}`;
-      qrImage.src = src;
-      qrImage.removeAttribute("hidden");
-      document.getElementById("download").removeAttribute("hidden");
-    }
+	}
 
-    function saveImage() {
-      fetch(src)
-        .then(res => res.blob())
-        .then(blob => {
-          saveAs(blob, `${qrValue}.png`);
-          document.getElementById("imgQR").setAttribute("hidden", "hidden");
-          document.getElementById("download").setAttribute("hidden", "hidden");
-        })
-        .catch(err => alert("Error downloading the QR code. Try again."));
-    }
-  </script>
+	function saveImage(){
+		saveAs(src,qrValue);
+		downloadQrImg.setAttribute('hidden', 'hidden');
+		downloadQrBtn.setAttribute('hidden', 'hidden');
+	}
+	</script>
 </body>
 </html>

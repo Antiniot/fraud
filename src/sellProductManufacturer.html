@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Sell Product | Fake Product Identification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #00ffe5;
+      --navbar-link-color: #f8f9fa;
+      --navbar-link-hover-color: var(--primary-color);
+      --brand-subtitle-color: #ffc107;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      padding-top: 85px;
+      min-height: 100vh;
+      animation: fadeSlideIn 1s ease-out;
+      color: #fff;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navbar Styles */
+    .navbar.fixed-top {
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .navbar-brand span {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--brand-subtitle-color);
+      display: block;
+      line-height: 1;
+    }
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--navbar-link-color) !important;
+      margin: 0 10px;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .navbar-nav .nav-link i {
+      margin-right: 6px;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--navbar-link-hover-color) !important;
+      border-bottom-color: var(--navbar-link-hover-color);
+    }
+
+    .navbar-nav .nav-link:hover i,
+    .navbar-nav .nav-link.active i {
+      opacity: 1;
+    }
+
+    h2 {
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 30px;
+      animation: zoomIn 0.7s ease;
+      font-size: 2.2rem;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .form-section {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      max-width: 900px;
+      margin: auto;
+      animation: slideUp 0.8s ease-in-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-label {
+      color: #eee;
+    }
+
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 10px var(--primary-color);
+      color: #fff;
+    }
+
+    .btn-register {
+      background-color: var(--primary-color);
+      color: #000;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 12px 25px;
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 255, 229, 0.3);
+    }
+
+    .btn-register:hover {
+      background-color: #fff;
+      color: #111;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,255,229,0.6);
+    }
+
+    #qr-reader {
+      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    #qr-reader-results {
+      color: #0f0;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container px-4">
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-cube"></i> Fake Product Identification
+      <span>through Blockchain</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link"><i class="fas fa-home"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="manufacturer.html" class="nav-link"><i class="fas fa-industry"></i>Manufacturer</a>
+        </li>
+        <li class="nav-item">
+          <a href="seller.html" class="nav-link active"><i class="fas fa-store"></i>Seller</a>
+        </li>
+        <li class="nav-item">
+          <a href="consumer.html" class="nav-link"><i class="fas fa-user"></i>Consumer</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<section class="form-section mt-5">
+  <h2>Sell Product to Seller</h2>
+
+  <div class="mb-4 text-center">
+    <div id="qr-reader" style="width: 300px;"></div>
+    <div id="qr-reader-results"></div>
+  </div>
+
+  <form>
+    <div class="row g-4 mb-4">
+      <div class="col-md-6">
+        <label for="productSN" class="form-label">Product SN</label>
+        <input disabled class="form-control" id="productSN" name="productSN" type="text" placeholder="Scanned product serial number" />
+      </div>
+      <div class="col-md-6">
+        <label for="sellerCode" class="form-label">Seller Code</label>
+        <input class="form-control" id="sellerCode" name="sellerCode" type="text" placeholder="Enter seller code" />
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="button" class="btn btn-register" id="register">Sell to Seller</button>
+    </div>
+  </form>
+</section>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/web3.min.js"></script>
+<script src="js/truffle-contract.js"></script>
+<script src="js/sellProductManufacturer.js"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+  function docReady(fn) {
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      setTimeout(fn, 1);
+    } else {
+      document.addEventListener("DOMContentLoaded", fn);
+    }
+  }
+
+  docReady(function () {
+    let lastResult, countResults = 0;
+    const resultContainer = document.getElementById('qr-reader-results');
+
+    function onScanSuccess(decodedText, decodedResult) {
+      if (decodedText !== lastResult) {
+        lastResult = decodedText;
+        countResults++;
+        const audio = new Audio('beep.wav');
+        audio.play();
+        resultContainer.innerText = decodedText;
+        document.getElementById("productSN").value = decodedText;
+      }
+    }
+
+    new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 })
+      .render(onScanSuccess);
+  });
+</script>
+
+</body>
+</html>

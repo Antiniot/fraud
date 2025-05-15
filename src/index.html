@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Fake Product ID - Ensure Authenticity, Build Trust</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A blockchain-powered system for fake product identification, protecting consumers and brands from counterfeit goods. Verify product authenticity easily and securely.">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --primary-hover-color: #0056b3; 
+      --secondary-color: #6c757d; 
+      --dark-bg-color: #1a1a1a; 
+      --light-bg-color: #ffffff;
+      --section-bg-alternate: #f8f9fa; 
+      --text-dark-color: #212529;
+      --text-light-color: #f8f9fa; 
+      --text-muted-color: #6c757d;
+      --border-color: #dee2e6;
+      --primary-color-rgb: 13, 110, 253; /* For use in rgba */
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--light-bg-color);
+      color: var(--text-dark-color);
+      padding-top: 76px; 
+      overflow-x: hidden; 
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: var(--text-dark-color);
+    }
+
+    /* Navbar - Styles remain the same */
+    .navbar {
+        background-color: var(--dark-bg-color) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        animation: fadeInDownNav 0.8s ease-out;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem; 
+      color: var(--primary-color) !important; 
+    }
+    .navbar-brand i { margin-right: 8px; }
+    .navbar-nav .nav-link {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--text-light-color) !important; 
+      margin: 0 12px;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+    .navbar-nav .nav-link i {
+      margin-right: 6px;
+      color: var(--text-light-color); 
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover, 
+    .navbar-nav .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom-color: var(--primary-color);
+    }
+    .navbar-nav .nav-link:hover i,
+    .navbar-nav .nav-link.active i { color: var(--primary-color) !important; }
+    .navbar-toggler { border-color: rgba(255,255,255,0.2); }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    
+     .hero {
+      background: linear-gradient(120deg, #2c3e50, #34495e); /* Example gradient */
+      color: white;
+      padding: 80px 0; /* Adjusted padding */
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .hero h1 {
+      font-size: 2.8rem; /* Adjusted size */
+      font-weight: 700; /* Bold */
+      animation: fadeInUp 1s ease-out;
+      color: white;
+    }
+    .hero p {
+      font-size: 1.2rem; /* Adjusted size */
+      animation: fadeInUp 1s 0.3s ease-out;
+      margin-bottom: 30px;
+    }
+    .hero .btn-primary { /* Ensure button styles are consistent if .hero is used */
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+    .hero .btn-primary:hover {
+        background-color: var(--primary-hover-color);
+        border-color: var(--primary-hover-color);
+    }
+
+
+     #productCarousel {
+        margin-top: 0; /* Remove top margin if it's directly after navbar or another section */
+        margin-bottom: 40px; /* Add some space below */
+    }
+    #productCarousel .carousel-item img {
+      max-height: 500px; /* Adjust as needed */
+      width: 100%;
+      object-fit: cover; /* Ensures image covers the area, might crop */
+      /* object-fit: contain; */ /* Ensures image fits, might leave space */
+    }
+    #productCarousel .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+      border-radius: 0.25rem;
+      padding: 1rem;
+      bottom: 20px; /* Adjust positioning if needed */
+    }
+    #productCarousel .carousel-caption h5 {
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+    #productCarousel .carousel-caption p {
+        color: #f8f9fa;
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+    /* Optional: Style for carousel controls if default isn't prominent enough */
+    #productCarousel .carousel-control-prev-icon,
+    #productCarousel .carousel-control-next-icon {
+        background-color: rgba(0,0,0,0.3);
+        border-radius: 50%;
+        padding: 15px; /* Makes the clickable area larger */
+    }
+
+
+    /* Buttons - Styles remain the same */
+    .btn {
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 30px; 
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.95rem;
+    }
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--text-light-color);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover-color);
+      border-color: var(--primary-hover-color);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(var(--primary-color-rgb), 0.3);
+    }
+    .btn-outline-light {
+        border-color: var(--text-light-color);
+        color: var(--text-light-color);
+    }
+    .btn-outline-light:hover {
+        background-color: var(--text-light-color);
+        color: var(--dark-bg-color);
+    }
+
+    /* Section Styling - Styles remain the same */
+    .section-padding { padding: 80px 0; }
+    .section-bg-alternate { background-color: var(--section-bg-alternate); }
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-title h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 10px;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background-color: var(--primary-color);
+      border-radius: 3px;
+    }
+    .section-title p.lead {
+        font-size: 1.15rem;
+        color: var(--text-muted-color);
+        max-width: 700px;
+        margin: 15px auto 0 auto;
+        font-weight: 400;
+    }
+
+    /* Feature/Card Styling - Styles remain the same */
+    .feature-card, .benefit-card, .how-it-works-card {
+      background-color: var(--light-bg-color);
+      padding: 35px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      text-align: center;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      height: 100%;
+      border: 1px solid var(--border-color);
+    }
+    .feature-card:hover, .benefit-card:hover, .how-it-works-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+    .feature-card i, .benefit-card i, .how-it-works-card i.step-icon {
+      font-size: 2.8rem; 
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      display: inline-block; 
+      padding: 15px;
+      background-color: rgba(var(--primary-color-rgb), 0.1);
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      line-height: 40px; 
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    }
+     .feature-card:hover i, .benefit-card:hover i, .how-it-works-card:hover i.step-icon {
+        transform: scale(1.1) rotate(5deg);
+        background-color: var(--primary-color);
+        color: var(--text-light-color);
+     }
+    .feature-card h4, .benefit-card h4, .how-it-works-card h5 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .feature-card p, .benefit-card p, .how-it-works-card p {
+      color: var(--text-muted-color);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+    .how-it-works-card .step-number {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Counterfeit Info Section - Styles remain the same */
+    #challenge .content-box {
+        padding: 20px;
+        background-color: var(--section-bg-alternate);
+        border-radius: 8px;
+    }
+    #challenge img {
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    #challenge .list-unstyled i { width: 20px; }
+
+    /* Call to Action Section - Styles remain the same */
+    .cta-section {
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover-color) 100%);
+      background-size: 200% 200%;
+      animation: gradientAnimation 10s ease infinite, fadeIn 1.5s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before { 
+        content: "";
+        position: absolute;
+        top:0; left:0; right:0; bottom:0;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.5;
+    }
+    .cta-section .container { position: relative; z-index: 1; }
+    .cta-section h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: var(--text-light-color);
+    }
+    .cta-section p {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      color: rgba(255,255,255,0.9);
+    }
+    .cta-section .btn-light {
+      background-color: var(--light-bg-color);
+      color: var(--primary-color);
+      border: 2px solid var(--light-bg-color);
+    }
+    .cta-section .btn-light:hover {
+      background-color: transparent;
+      color: var(--light-bg-color);
+      border-color: var(--light-bg-color);
+    }
+    .cta-section .btn-outline-light { border-width: 2px; }
+
+    /* Footer - Styles remain the same */
+    .footer {
+      background-color: var(--dark-bg-color);
+      color: var(--text-muted-color); 
+      padding: 60px 0 30px 0;
+      font-size: 0.95rem;
+    }
+    .footer h5 {
+        color: var(--text-light-color);
+        margin-bottom: 25px;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .footer p, .footer .list-unstyled li { margin-bottom: 10px; }
+    .footer a {
+      color: var(--text-muted-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer a:hover { color: var(--primary-color); }
+    .footer .social-icons a {
+      font-size: 1.4rem;
+      margin: 0 8px;
+      color: var(--text-muted-color);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block; 
+    }
+    .footer .social-icons a:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px) scale(1.1);
+    }
+    .footer .copyright {
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid #333; 
+        font-size: 0.9rem;
+        color: #888;
+    }
+
+    /* Animation Styles (to be controlled by JS) */
+    .animate-on-scroll {
+        opacity: 0; /* Start hidden */
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .animate-fadeInUp { transform: translateY(40px); }
+    .animate-slideInLeftImage { transform: translateX(-80px) scale(0.9); }
+    .animate-slideInRightText { transform: translateX(80px); }
+    .animate-zoomIn { transform: scale(0.85); }
+
+    .is-visible { /* Class added by Intersection Observer */
+        opacity: 1;
+        transform: none !important; /* Override initial transform */
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInDownNav { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } 
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Responsive Adjustments - Styles remain the same */
+    @media (max-width: 991.98px) {
+        .navbar-nav .nav-link { margin: 0 8px; font-size: 0.9rem;}
+        #heroCarousel .carousel-item { height: calc(80vh - 76px); min-height: 400px;}
+        #heroCarousel .carousel-caption h5 { font-size: 2.5rem; }
+        #heroCarousel .carousel-caption p { font-size: 1.1rem; }
+        .section-title h2 { font-size: 2.3rem; }
+        .cta-section h2 { font-size: 2.5rem; }
+    }
+    @media (max-width: 767.98px) {
+      body { padding-top: 70px; } 
+      .navbar-nav { margin-top: 15px; text-align: center; }
+      .navbar-nav .nav-link { margin: 8px 0; border-bottom: none; padding: 0.5rem 1rem;}
+      .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+        background-color: rgba(var(--primary-color-rgb), 0.1);
+        color: var(--primary-color) !important;
+        border-radius: 5px;
+      }
+      #heroCarousel .carousel-item { height: calc(70vh - 70px); min-height: 350px; }
+      #heroCarousel .carousel-caption h5 { font-size: 1.8rem; }
+      #heroCarousel .carousel-caption p { font-size: 1rem; }
+      .section-title h2 { font-size: 2rem; }
+      .section-title p.lead { font-size: 1rem; }
+      .cta-section h2 { font-size: 2rem; }
+      .cta-section p { font-size: 1.1rem; }
+      .cta-section .btn { margin-bottom: 10px; display: block; width: 80%; margin-left: auto; margin-right: auto;}
+      #challenge .text-content { margin-top: 30px; }
+      .footer { text-align: center; }
+      .footer .text-md-start, .footer .text-md-end { text-align: center !important;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar remains the same -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="fas fa-shield-virus"></i> FakeProduct ID</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+        <li class="nav-item"><a href="manufacturer.html" class="nav-link"><i class="fas fa-industry"></i> Manufacturer</a></li>
+        <li class="nav-item"><a href="seller.html" class="nav-link"><i class="fas fa-store"></i> Seller</a></li>
+        <li class="nav-item"><a href="consumer.html" class="nav-link"><i class="fas fa-user-check"></i> Consumer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Carousel Section -->
+<div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000"> <!-- data-bs-interval for autoplay speed -->
+  <div class="carousel-indicators"> <!-- Optional: Add indicators -->
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active"> <!-- Only ONE item should have .active class -->
+       <img src="https://www.shutterstock.com/image-photo/complaint-asian-young-woman-hand-260nw-2234876639.jpg" class="d-block w-100" alt="Genuine Product Camera">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Protect Against Counterfeits</h5>
+        <p>Our system helps you identify and avoid fake products efficiently.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.shutterstock.com/image-vector/color-megaphone-icon-word-counterfeit-260nw-2492879689.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="Secure Blockchain Technology">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Secure Blockchain Technology</h5>
+        <p>Verifying authenticity in real-time with a secure and decentralized network.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.shutterstock.com/image-photo/puzzle-text-fake-real-260nw-594036014.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="Consumer Trust Smartphone">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Ensure Consumer Trust</h5>
+        <p>Build trust with consumers by offering verifiable product details.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- The rest of your page content (Challenge, Solution, How it Works, Benefits, CTA, Footer) remains the same as the previous version -->
+<!-- The Challenge of Counterfeits Section -->
+<section id="challenge" class="section-padding">
+  <div class="container">
+    <div class="section-title animate-on-scroll animate-fadeInUp">
+      <h2>The Pervasive Threat of Counterfeits</h2>
+      <p class="lead">Fake products are more than an inconvenience; they undermine safety, erode trust, and cause significant economic damage globally.</p>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <img src="https://www.shutterstock.com/image-illustration/fake-genuine-signpost-showing-imitation-260nw-180041630.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid animate-on-scroll animate-slideInLeftImage" alt="Investigating counterfeit products">
+      </div>
+      <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0 text-content animate-on-scroll animate-slideInRightText">
+        <h3 class="mb-4">Why This Battle Matters More Than Ever</h3>
+        <p>From faulty electronics to hazardous counterfeit pharmaceuticals, the ripple effects of fake goods touch every consumer and every industry.</p>
+        <ul class="list-unstyled mt-4">
+          <li class="mb-3 d-flex align-items-start"><i class="fas fa-user-injured fa-fw text-danger me-3 mt-1"></i><div><strong>Consumer Harm:</strong> Risking health and safety with substandard or dangerous products.</div></li>
+          <li class="mb-3 d-flex align-items-start"><i class="fas fa-chart-line-down fa-fw text-danger me-3 mt-1"></i><div><strong>Brand Devaluation:</strong> Suffering financial losses, damaged reputation, and diminished customer loyalty.</div></li>
+          <li class="mb-3 d-flex align-items-start"><i class="fas fa-globe-americas fa-fw text-danger me-3 mt-1"></i><div><strong>Economic Disruption:</strong> Leading to job losses, stifled innovation, and unfair competition.</div></li>
+        </ul>
+        <p class="mt-4">It's imperative to adopt robust solutions that offer undeniable proof of authenticity and restore confidence in the marketplace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Solution Section -->
+<section id="solution" class="section-padding section-bg-alternate">
+  <div class="container">
+    <div class="section-title animate-on-scroll animate-fadeInUp">
+      <h2>Our Solution: Transparency Through Technology</h2>
+      <p class="lead">FakeProduct ID leverages the immutable and decentralized power of blockchain to forge a new standard of product verification and trust.</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="feature-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.1s;">
+          <i class="fas fa-cubes"></i>
+          <h4>Immutable Ledger</h4>
+          <p>Every genuine product is uniquely identified and its history indelibly recorded on the blockchain, creating a tamper-proof digital twin.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="feature-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.2s;">
+          <i class="fas fa-qrcode"></i>
+          <h4>Instant Verification</h4>
+          <p>Consumers can effortlessly verify authenticity by scanning a product's unique digital ID, accessing its secure blockchain record in real-time.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="feature-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.3s;">
+          <i class="fas fa-network-wired"></i>
+          <h4>Trusted Ecosystem</h4>
+          <p>Fostering a transparent and accountable network connecting manufacturers, distributors, retailers, and consumers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="section-padding">
+    <div class="container">
+        <div class="section-title animate-on-scroll animate-fadeInUp">
+            <h2>How It Works: A Simple Path to Authenticity</h2>
+            <p class="lead">Our streamlined process empowers every participant in the product lifecycle, making authenticity verification intuitive and accessible.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="how-it-works-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.1s;">
+                    <i class="fas fa-cogs step-icon"></i>
+                    <div class="step-number">Step 1</div>
+                    <h5>Manufacturers Register</h5>
+                    <p>Original products are assigned unique digital identities and securely recorded on the blockchain at the point of creation.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="how-it-works-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.2s;">
+                     <i class="fas fa-truck-loading step-icon"></i>
+                    <div class="step-number">Step 2</div>
+                    <h5>Supply Chain Tracking</h5>
+                    <p>Product movements and transfers through the supply chain are logged, ensuring a transparent and verifiable chain of custody.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="how-it-works-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.3s;">
+                     <i class="fas fa-mobile-alt step-icon"></i>
+                    <div class="step-number">Step 3</div>
+                    <h5>Consumers Verify</h5>
+                    <p>A simple scan of the product's unique ID (e.g., QR code) allows instant access to its provenance and authenticity status.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Benefits Section -->
+<section id="benefits" class="section-padding section-bg-alternate">
+  <div class="container">
+    <div class="section-title animate-on-scroll animate-fadeInUp">
+      <h2>Benefits Across the Board</h2>
+      <p class="lead">Our Fake Product Identification system delivers tangible advantages for manufacturers, sellers, and consumers alike.</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="benefit-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.1s;">
+          <i class="fas fa-industry"></i>
+          <h4>For Manufacturers</h4>
+          <p>Safeguard brand equity, mitigate revenue loss from fakes, gain supply chain visibility, and enhance consumer trust through proven authenticity.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="benefit-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.2s;">
+          <i class="fas fa-store-alt"></i>
+          <h4>For Sellers & Retailers</h4>
+          <p>Instill confidence by offering verified genuine products, differentiate from illicit traders, reduce counterfeit stock risks, and boost customer loyalty.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="benefit-card animate-on-scroll animate-zoomIn" style="transition-delay: 0.3s;">
+          <i class="fas fa-user-shield"></i>
+          <h4>For Consumers</h4>
+          <p>Make purchases with confidence, ensure product safety and quality, avoid fraudulent goods, and access transparent product information easily.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Champion Authenticity?</h2>
+    <p>Join us in building a future where every product is verifiable and every purchase is made with absolute confidence. Explore our platform or verify a product today.</p>
+    <a href="consumer.html" class="btn btn-light me-sm-2"><i class="fas fa-check-circle me-2"></i> Verify Your Product</a>
+    <a href="manufacturer.html" class="btn btn-outline-light ms-sm-2 mt-3 mt-sm-0"><i class="fas fa-handshake me-2"></i> Become a Partner</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0 text-md-start">
+            <h5><i class="fas fa-shield-virus me-2"></i> FakeProduct ID</h5>
+            <p class="mt-3">Dedicated to creating a transparent and trustworthy global marketplace by combating counterfeit products with innovative technology.</p>
+             <div class="social-icons mt-4">
+              <a href="#" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <h5>Navigate</h5>
+            <ul class="list-unstyled">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#solution">Our Solution</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+            <h5>For Users</h5>
+            <ul class="list-unstyled">
+                <li><a href="manufacturer.html">Manufacturers</a></li>
+                <li><a href="seller.html">Sellers & Retailers</a></li>
+                <li><a href="consumer.html">Consumers</a></li>
+                <li><a href="#">FAQs</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-0">
+            <h5>Legal</h5>
+             <ul class="list-unstyled">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright text-center">
+      <p>© <script>document.write(new Date().getFullYear())</script> FakeProduct ID. All Rights Reserved. <br> Empowering Trust Through Technology.</p>
+    </div>
+  </div>
+</footer>
+
+  <!-- ***** IMPORTANT SCRIPT ORDERING ***** -->
+  <!-- 1. jQuery (Only if your custom scripts explicitly require it. Bootstrap 5 itself does NOT) -->
+  <script src="js/jquery.min.js"></script> 
+  
+  <!-- 2. Bootstrap JS Bundle (includes Popper for tooltips, popovers, dropdowns, AND Carousel JS) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- 3. Your Custom JS files -->
+  <!-- !! URGENT: Check these for errors if carousel is still stuck. !! -->
+  <!-- !! Try commenting them out one by one. !! -->
+  <script src="js/main.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("DOM fully loaded and parsed. Initializing custom scripts.");
+
+        // --- CAROUSEL DEBUGGING ---
+        // Option 1: Ensure data-bs-ride="carousel" is on the #heroCarousel div (it is).
+        // Option 2: Explicitly initialize the carousel (can help if data attributes aren't picked up or to confirm Bootstrap JS is loaded)
+        try {
+            const heroCarouselElement = document.getElementById('heroCarousel');
+            if (heroCarouselElement && typeof bootstrap !== 'undefined' && bootstrap.Carousel) { // Check if bootstrap object and Carousel exist
+                const heroCarousel = new bootstrap.Carousel(heroCarouselElement, {
+                    interval: 5000, // Optional: set interval time in ms
+                    wrap: true      // Optional: whether carousel should cycle continuously or stop at the last slide
+                });
+                console.log("Bootstrap Carousel explicitly initialized for #heroCarousel.");
+            } else {
+                if (!heroCarouselElement) console.error("#heroCarousel element not found.");
+                if (typeof bootstrap === 'undefined') console.error("Bootstrap JavaScript object not found. Check script loading.");
+                else if (!bootstrap.Carousel) console.error("bootstrap.Carousel component not found. Check Bootstrap JS version or integrity.");
+            }
+        } catch (e) {
+            console.error("Error explicitly initializing Bootstrap Carousel:", e);
+        }
+        // --- END CAROUSEL DEBUGGING ---
+
+
+        // Active link based on URL (basic)
+        try {
+            const currentPath = window.location.pathname.split("/").pop() || "index.html";
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        } catch (e) {
+            console.error("Error in active link script:", e);
+        }
+
+        // Intersection Observer for scroll animations
+        try {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            if (window.IntersectionObserver) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            // observer.unobserve(entry.target); // Optional: stop observing after first animation
+                        } else {
+                            // entry.target.classList.remove('is-visible'); // Optional for re-animation
+                        }
+                    });
+                }, { threshold: 0.1 }); 
+
+                animatedElements.forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                animatedElements.forEach(el => el.classList.add('is-visible'));
+            }
+        } catch (e) {
+            console.error("Error in Intersection Observer script:", e);
+        }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Add Seller | Fake Product Identification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #0d6efd; /* Or #00ffe5 for teal underline */
+      --navbar-link-color: #f8f9fa;
+      --navbar-link-hover-color: var(--primary-color); /* Or #00ffe5 */
+      --brand-subtitle-color: #ffc107;
+      --form-input-bg: rgba(255, 255, 255, 0.1);
+      --form-input-focus-bg: rgba(255, 255, 255, 0.15);
+      --form-input-text-color: #fff;
+      --form-label-color: #bbb; 
+      --btn-primary-bg: #00ffe5; 
+      --btn-primary-text: #000;
+      --btn-primary-hover-bg: #fff;
+      --btn-primary-hover-text: #111;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #3c365a); /* Consistent gradient */
+      min-height: 100vh;
+      padding-top: 85px; 
+      animation: slideFadeInPage 0.8s ease-out;
+      color: #fff; 
+    }
+    @keyframes slideFadeInPage {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navbar Styling - Consistent Glassmorphism with Underline Animation */
+    .navbar.fixed-top {
+      background-color: rgba(0, 0, 0, 0.8) !important; 
+      backdrop-filter: blur(12px); 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      animation: fadeInDownNav 0.8s ease-out;
+    }
+    @keyframes fadeInDownNav { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 600;
+      font-size: 1.5rem; 
+    }
+    .navbar-brand i { 
+        margin-right: 8px;
+        color: var(--btn-primary-bg); 
+    }
+    .navbar-brand span.brand-subtitle { 
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--brand-subtitle-color);
+      display: block;
+      line-height: 1;
+      margin-top: -2px;
+    }
+    .navbar-nav .nav-link {
+      font-family: 'Poppins', sans-serif; 
+      font-weight: 500; 
+      font-size: 0.95rem; 
+      color: var(--navbar-link-color) !important; 
+      margin: 0 10px;
+      padding: 0.5rem 0; 
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+      border-bottom: 2px solid transparent; 
+      position: relative;
+    }
+    .navbar-nav .nav-link i.nav-icon { /* Specific class for nav icons */
+      margin-right: 8px; /* Increased spacing for icons */
+      opacity: 0.8;
+      font-size: 0.9em; /* Slightly smaller icons if needed */
+    }
+    .navbar-nav .nav-link:hover, 
+    .navbar-nav .nav-link.active { 
+      color: var(--navbar-link-hover-color) !important; 
+      border-bottom-color: var(--navbar-link-hover-color); 
+    }
+    .navbar-nav .nav-link:hover i.nav-icon,
+    .navbar-nav .nav-link.active i.nav-icon { 
+        opacity: 1;
+    }
+    .navbar-toggler { 
+        border-color: rgba(255,255,255,0.2) !important; 
+    }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    /* Page Title */
+    h2.page-title {
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 40px;
+      animation: zoomInTitle 0.7s ease-out 0.2s both;
+      font-size: 2.5rem;
+    }
+    @keyframes zoomInTitle {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Form Section Styling (from your original code, slightly enhanced) */
+    .form-section {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 35px 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: slideUpForm 0.8s ease-out 0.4s both;
+      max-width: 850px; /* Max width for form */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @keyframes slideUpForm {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-floating > .form-control,
+    .form-floating > .form-select {
+        padding-top: 1.625rem;
+        padding-bottom: .625rem;
+    }
+    .form-floating > label {
+        color: var(--form-label-color);
+        padding: 1rem 0.75rem;
+    }
+    .form-control {
+      background-color: var(--form-input-bg);
+      color: var(--form-input-text-color);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .form-control::placeholder { 
+        color: rgba(255,255,255,0.5);
+    }
+    .form-control:focus {
+      outline: none;
+      box-shadow: 0 0 0 0.2rem rgba(0,255,229,0.25);
+      background-color: var(--form-input-focus-bg);
+      border-color: rgba(0,255,229,0.5);
+      color: var(--form-input-text-color);
+    }
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+      color: var(--btn-primary-bg); 
+      opacity: 1;
+      transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+    }
+
+    .btn-submit-form { /* Renamed from btn-register */
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border: none;
+      padding: 10px 30px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 12px rgba(0,255,229,0.25);
+    }
+    .btn-submit-form:hover {
+      background-color: var(--btn-primary-hover-bg);
+      color: var(--btn-primary-hover-text);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px rgba(0,255,229,0.4);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-shield-alt"></i> 
+      Fake Product Identification
+      <span class="brand-subtitle">through Blockchain</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#addSellerNav" aria-controls="addSellerNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="addSellerNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home nav-icon"></i> Home</a></li>
+        <li class="nav-item"><a href="manufacturer.html" class="nav-link"><i class="fas fa-industry nav-icon"></i> Manufacturer</a></li>
+        <li class="nav-item"><a href="seller.html" class="nav-link"><i class="fas fa-store nav-icon"></i> Seller</a></li> <!-- This might be the active one -->
+        <li class="nav-item"><a href="consumer.html" class="nav-link"><i class="fas fa-user-check nav-icon"></i> Consumer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Seller Form -->
+<section class="container mt-5"> <!-- Added mt-5 for spacing from navbar -->
+  <h2 class="page-title">Register New Seller</h2>
+  <div class="form-section">
+    <form id="addSellerForm">
+      <div class="row g-3 mb-3"> <!-- g-3 for slightly less gap, mb-3 for less bottom margin -->
+        <div class="col-md-6 form-floating">
+          <input type="text" class="form-control" id="SellerName" name="SellerName" placeholder="Seller Name" required>
+          <label for="SellerName">Seller Name</label>
+        </div>
+        <div class="col-md-6 form-floating">
+          <input type="text" class="form-control" id="SellerBrand" name="SellerBrand" placeholder="Seller Brand (Optional)">
+          <label for="SellerBrand">Seller Brand (Optional)</label>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6 form-floating">
+          <input type="text" class="form-control" id="SellerCode" name="SellerCode" placeholder="Seller Code (e.g., S001)" required>
+          <label for="SellerCode">Seller Code</label>
+        </div>
+        <div class="col-md-6 form-floating">
+          <input type="tel" class="form-control" id="SellerPhoneNumber" name="SellerPhoneNumber" placeholder="Phone Number" required>
+          <label for="SellerPhoneNumber">Phone Number</label>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6 form-floating">
+          <input type="text" class="form-control" id="SellerManager" name="SellerManager" placeholder="Seller Manager Name">
+          <label for="SellerManager">Seller Manager Name</label>
+        </div>
+        <div class="col-md-6 form-floating">
+          <input type="text" class="form-control" id="SellerAddress" name="SellerAddress" placeholder="Seller Address" required>
+          <label for="SellerAddress">Seller Address</label>
+        </div>
+      </div>
+
+      <div class="form-floating mb-4"> <!-- Increased mb for this single field -->
+        <input type="text" class="form-control" id="ManufacturerId" name="ManufacturerId" placeholder="Associated Manufacturer ID" required>
+        <label for="ManufacturerId">Associated Manufacturer ID</label>
+      </div>
+
+      <div class="text-center mt-4"> <!-- Added mt-4 for spacing -->
+        <button type="submit" class="btn btn-submit-form">
+            <i class="fas fa-user-plus me-2"></i>Add Seller
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery is loaded before Bootstrap bundle by default in many Bootstrap 5 setups, but Bootstrap 5 components don't require it. -->
+    <!-- If your sellerApp.js or main.js relies on jQuery, keep it. Otherwise, it might be removable. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    
+    <!-- Old Popper and Bootstrap JS - Bootstrap Bundle already includes Popper. These are likely redundant or for an older Bootstrap version. -->
+    <!-- <script src="js/popper.js"></script> -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    
+    <script src="js/main.js"></script> <!-- Check this for conflicts with Bootstrap 5 navbar JS -->
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/sellerApp.js"></script> <!-- This should handle the form submission logic -->
+
+    <script>
+      // Script to set active nav link
+      document.addEventListener("DOMContentLoaded", function() {
+          const currentPage = window.location.pathname.split("/").pop();
+          const navLinks = document.querySelectorAll('#addSellerNav .nav-link');
+          let isPageActive = false;
+
+          navLinks.forEach(link => {
+              const linkPage = link.getAttribute('href').split("/").pop();
+              link.classList.remove('active'); 
+              if (linkPage === currentPage) {
+                  link.classList.add('active');
+                  isPageActive = true;
+              }
+          });
+
+          // Fallback: if on addSeller.html, make Manufacturer link active
+          // (Since adding a seller is typically a manufacturer's action related to their sellers)
+          if (!isPageActive && currentPage === "addSeller.html") {
+               const manufacturerLink = document.querySelector('#addSellerNav .nav-link[href="manufacturer.html"]');
+               if (manufacturerLink) manufacturerLink.classList.add('active');
+          } else if (!isPageActive && (currentPage === "" || currentPage === "index.html")) {
+               const homeLink = document.querySelector('#addSellerNav .nav-link[href="index.html"]');
+               if (homeLink) homeLink.classList.add('active');
+          }
+      });
+    </script>
+</body>
+</html>

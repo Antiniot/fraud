@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Consumer Dashboard | Fake Product ID</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome (using a newer version for consistency) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Link to your existing style.css - BE AWARE OF POTENTIAL CONFLICTS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --primary-hover-color: #0056b3; 
+      --dark-bg-color: #1a1a1a;      /* For Navbar */
+      --light-bg-color: #ffffff;     /* Main page background */
+      --section-bg-alternate: #f4f6f8; 
+      --text-dark-color: #212529;    
+      --text-light-color: #f8f9fa;    
+      --text-muted-color: #6c757d;   
+      --border-color: #dee2e6;
+      --primary-color-rgb: 13, 110, 253;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Open Sans', sans-serif; /* Consistent font */
+      background-color: var(--light-bg-color); 
+      color: var(--text-dark-color);          
+      padding-top: 76px; /* For fixed-top navbar */
+      min-height: 100vh;
+      overflow-x: hidden;
+      /* Removed body-specific animation for now to avoid conflict with ftco-section animation if any */
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: var(--text-dark-color); 
+    }
+
+    /* Navbar - Standardized Style */
+    .navbar.fixed-top { /* Ensure specificity for ftco template overrides */
+        background-color: var(--dark-bg-color) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        animation: fadeInDownNav 0.8s ease-out;
+    }
+    .navbar-brand { /* Standardized */
+      font-weight: 700;
+      font-size: 1.8rem; 
+      color: var(--primary-color) !important; 
+      padding-top: 0; /* Reset ftco styles if any */
+      padding-bottom: 0;
+    }
+    .navbar-brand i { margin-right: 8px; }
+    /* Removed .navbar-brand span for subtitle to match other pages for now */
+    
+    .navbar-nav .nav-link { /* Standardized */
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem; 
+      color: var(--text-light-color) !important; 
+      margin: 0 10px;
+      padding: 0.5rem 0; 
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+      border-bottom: 2px solid transparent; 
+    }
+    .navbar-nav .nav-link i {
+      margin-right: 6px;
+      color: var(--text-light-color); 
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover, 
+    .navbar-nav .nav-link.active { 
+      color: var(--primary-color) !important; 
+      border-bottom-color: var(--primary-color); 
+    }
+    .navbar-nav .nav-link:hover i,
+    .navbar-nav .nav-link.active i { 
+        color: var(--primary-color) !important; 
+    }
+    .navbar-toggler { 
+        border-color: rgba(255,255,255,0.2) !important; 
+        color: rgba(255,255,255,0.8) !important; /* For the "Menu" text if present */
+    }
+    .navbar-toggler-icon, .navbar-toggler .fa-bars { /* Handle both Bootstrap and Font Awesome toggler icon */
+        background-image: none !important; /* Override Bootstrap default if using FA */
+        color: rgba(255,255,255,0.8) !important;
+        font-size: 1.25rem; /* Adjust if FA icon looks small */
+    }
+    /* If ftco_navbar styling is too aggressive, you might need !important on more properties */
+
+
+    /* Consumer Hero Section (Adapting your existing section) */
+    .consumer-hero-section {
+      padding: 60px 0;
+      text-align: center;
+      background-color: var(--light-bg-color); /* Or var(--section-bg-alternate) for slight contrast */
+      border-bottom: 1px solid var(--border-color);
+      animation: fadeInContent 1s ease-out 0.2s both; /* Delayed animation */
+    }
+    .consumer-hero-section .icon-display {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+    }
+    .consumer-hero-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+    .consumer-hero-section p.lead {
+      font-size: 1.2rem;
+      color: var(--text-muted-color);
+      max-width: 650px;
+      margin: 0 auto 30px auto;
+    }
+     .btn-primary-consumer {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--text-light-color);
+        padding: 12px 35px;
+        font-weight: 500;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+    .btn-primary-consumer:hover {
+        background-color: var(--primary-hover-color);
+        border-color: var(--primary-hover-color);
+        transform: translateY(-2px);
+    }
+
+    /* Action Cards Section */
+    .actions-section {
+        padding: 60px 0;
+        background-color: var(--section-bg-alternate);
+    }
+    .section-title-consumer { 
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .section-title-consumer h3 {
+      font-size: 2.2rem;
+      font-weight: 700; 
+      position: relative;
+      padding-bottom: 15px;
+      color: var(--text-dark-color); 
+    }
+    .section-title-consumer h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px; 
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+    .action-card-consumer {
+      background: var(--light-bg-color); 
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      animation: zoomIn 0.6s ease-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .action-card-consumer:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+    .action-card-consumer .card-icon {
+      font-size: 2.8rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    .action-card-consumer h4 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--text-dark-color); 
+    }
+    .action-card-consumer p {
+      color: var(--text-muted-color); 
+      font-size: 0.95rem;
+      flex-grow: 1; 
+      margin-bottom: 20px;
+    }
+    .btn-outline-primary-consumer { 
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        background-color: transparent;
+        padding: 10px 25px; 
+        font-weight: 500;
+        border-radius: 25px;
+        font-size: 0.9rem;
+    }
+    .btn-outline-primary-consumer:hover {
+        background-color: var(--primary-color);
+        color: var(--text-light-color); 
+        border-color: var(--primary-color);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--section-bg-alternate); 
+      color: var(--text-muted-color); 
+      padding: 40px 0; 
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 0; 
+      border-top: 1px solid var(--border-color);
+    }
+    .footer p { margin-bottom: 5px;}
+    .footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .footer a:hover { text-decoration: underline;}
+
+    /* Animation Keyframes */
+    @keyframes fadeInDownNav { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+    /* Responsive adjustments */
+    @media (max-width: 991.98px) {
+      .navbar-nav .nav-link { margin: 0 5px; font-size: 0.9rem;}
+      .consumer-hero-section h2 { font-size: 2.5rem; }
+      .section-title-consumer h3 { font-size: 2rem; }
+    }
+     @media (max-width: 767.98px) {
+      body { padding-top: 70px; } /* Ensure this matches actual navbar height on mobile */
+      .navbar-nav { margin-top: 15px; text-align: center; } /* From ftco example, good for mobile */
+      .navbar-nav .nav-link { margin: 8px 0; }
+      .consumer-hero-section h2 { font-size: 2.2rem; }
+      .action-card-consumer { margin-bottom: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- New Standard Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container"> <!-- Changed from container-fluid for consistency -->
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-shield-alt"></i> FakeProduct ID
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#consumerNav" aria-controls="consumerNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> <!-- Bootstrap 5 default toggler -->
+      <!-- <span class="fa fa-bars"></span> Menu --> <!-- If you prefer FA toggler with text -->
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="consumerNav">
+      <ul class="navbar-nav"> <!-- Removed m-auto for justify-content-end to work well -->
+        <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li class="nav-item"><a href="consumerPurchaseHistory.html" class="nav-link"><i class="fas fa-history"></i> Purchase History</a></li>
+        <li class="nav-item"><a href="verifyProducts.html" class="nav-link"><i class="fas fa-check-circle"></i> Verify Product</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END New Standard Navbar -->
+
+<!-- Consumer Hero Section -->
+<section class="consumer-hero-section">
+  <div class="container">
+    <div class="icon-display"><i class="fas fa-user-check"></i></div>
+    <h2>Consumer Dashboard</h2>
+    <p class="lead">Verify product authenticity and review your purchase history with ease. <br>Use the navigation bar above for specific actions.</p>
+    <a href="verifyProducts.html" class="btn btn-primary-consumer mt-3"><i class="fas fa-qrcode me-2"></i> Scan & Verify Product</a>
+  </div>
+</section>
+
+<!-- Key Consumer Actions Section -->
+<section class="actions-section">
+    <div class="container">
+        <div class="section-title-consumer">
+            <h3>Your Tools for Authenticity</h3>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-5 mb-4"> 
+                <div class="action-card-consumer">
+                    <div>
+                        <div class="card-icon"><i class="fas fa-barcode"></i></div>
+                        <h4>Product Verification</h4>
+                        <p>Easily verify the authenticity of any product by scanning its unique identifier or entering its code.</p>
+                    </div>
+                    <a href="verifyProducts.html" class="btn btn-outline-primary-consumer mt-auto">Verify Now</a>
+                </div>
+            </div>
+            <div class="col-md-5 mb-4"> 
+                <div class="action-card-consumer">
+                     <div>
+                        <div class="card-icon"><i class="fas fa-receipt"></i></div>
+                        <h4>Purchase History</h4>
+                        <p>Access a secure and transparent record of all your verified product purchases made through the system.</p>
+                    </div>
+                    <a href="consumerPurchaseHistory.html" class="btn btn-outline-primary-consumer mt-auto">View History</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>© <script>document.write(new Date().getFullYear())</script> FakeProduct ID. All Rights Reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+</footer>
+
+  <!-- Bootstrap Bundle JS (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- jQuery (if your custom scripts need it) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <!-- Your Custom JS files -->
+  <!-- IMPORTANT: Ensure these files do not have errors, especially main.js if it's from ftco -->
+  <script src="js/main.js"></script> <!-- This might have ftco specific JS, check for conflicts -->
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <!-- <script src="js/sellerDataApp.js"></script> --> <!-- This was likely for seller page, remove if not needed for consumer -->
+  <!-- Add consumer-specific JS if any, e.g., js/consumerApp.js -->
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('#consumerNav .nav-link'); // Target new navbar ID
+        let homeFallback = true;
+
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href').split("/").pop();
+            link.classList.remove('active'); // Ensure all are inactive first
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+                homeFallback = false; 
+            }
+        });
+        
+        if (homeFallback && (currentPage === "" || currentPage === "index.html" || currentPage === "consumer.html")) {
+            // If on consumer.html itself or index, make 'Home' active or a specific 'Dashboard' link if you add one
+            const homeLink = document.querySelector('#consumerNav .nav-link[href="index.html"]');
+            if (homeLink) {
+                homeLink.classList.add('active');
+            }
+        }
+    });
+  </script>
+
+</body>
+</html>

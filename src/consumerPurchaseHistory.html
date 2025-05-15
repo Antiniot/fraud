@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Consumer Purchase History | Fake Product ID</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Link to your existing style.css - BE AWARE OF POTENTIAL CONFLICTS -->
+  <!-- If style.css has ftco_navbar styles, they might interfere. -->
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+    :root {
+      --primary-color: #0d6efd; /* Standard blue for underline, can change to #00ffe5 */
+      --navbar-link-color: #f8f9fa; /* Light color for nav links */
+      --navbar-link-hover-color: var(--primary-color); /* Or #00ffe5 */
+      --brand-subtitle-color: #ffc107; /* From your example */
+      --form-input-bg: rgba(255, 255, 255, 0.1);
+      --form-input-focus-bg: rgba(255, 255, 255, 0.2);
+      --form-input-text-color: #fff;
+      --form-label-color: #eee;
+      --btn-primary-bg: #00ffe5; /* Teal button from example */
+      --btn-primary-text: #000;
+      --btn-primary-hover-bg: #fff;
+      --btn-primary-hover-text: #111;
+      --table-bg: rgba(255,255,255,0.08);
+      --table-header-bg: rgba(255,255,255,0.15);
+      --table-text-color: #fff;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #3c365a); /* Slightly adjusted end color */
+      padding-top: 85px; /* Adjusted for potentially taller navbar with subtitle */
+      animation: fadeSlide 1s ease;
+      min-height: 100vh;
+      color: var(--table-text-color); /* Default text color for the page */
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navbar Styling - Adopting from your "Query Sellers" example */
+    .navbar.fixed-top {
+      background-color: rgba(0, 0, 0, 0.8) !important; /* Darker, more translucent */
+      backdrop-filter: blur(12px); /* Stronger blur */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      animation: fadeInDownNav 0.8s ease-out; /* Animation from other pages */
+    }
+     @keyframes fadeInDownNav { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+
+
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 600;
+      font-size: 1.5rem; /* Main brand size */
+    }
+    .navbar-brand i { /* Optional icon next to brand */
+        margin-right: 8px;
+        color: var(--btn-primary-bg); /* Teal icon */
+    }
+    .navbar-brand span.brand-subtitle { /* Specific class for subtitle */
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--brand-subtitle-color);
+      display: block;
+      line-height: 1;
+      margin-top: -2px;
+    }
+    .navbar-nav .nav-link {
+      font-family: 'Poppins', sans-serif; /* Poppins for nav links */
+      font-weight: 500; /* Medium weight */
+      font-size: 0.95rem; 
+      color: var(--navbar-link-color) !important; 
+      margin: 0 10px;
+      padding: 0.5rem 0; 
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+      border-bottom: 2px solid transparent; 
+      position: relative;
+    }
+    .navbar-nav .nav-link i { /* Icons in nav links */
+      margin-right: 6px;
+      opacity: 0.8;
+    }
+    .navbar-nav .nav-link:hover, 
+    .navbar-nav .nav-link.active { 
+      color: var(--navbar-link-hover-color) !important; 
+      border-bottom-color: var(--navbar-link-hover-color); 
+    }
+    .navbar-nav .nav-link:hover i,
+    .navbar-nav .nav-link.active i { 
+        opacity: 1;
+    }
+    .navbar-toggler { 
+        border-color: rgba(255,255,255,0.2) !important; 
+    }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+
+    h2.page-title { /* Specific class for main page titles */
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 40px; /* Increased margin */
+      font-size: 2.5rem; /* Larger title */
+    }
+
+    .form-section {
+      background: rgba(255, 255, 255, 0.07); /* Slightly more transparent */
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 15px; /* Softer radius */
+      backdrop-filter: blur(10px);
+      padding: 30px 35px; /* Adjusted padding */
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .form-section h3.section-subtitle { /* Subtitle within form sections */
+        color: #ddd;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 1.3rem;
+    }
+
+
+    label {
+      color: var(--form-label-color);
+      margin-bottom: 0.5rem; /* Space below label */
+      font-weight: 500; /* Slightly bolder labels */
+    }
+
+    .form-control {
+      background-color: var(--form-input-bg);
+      color: var(--form-input-text-color);
+      border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+      border-radius: 8px; /* Softer radius */
+      padding: 0.85rem 1rem; /* Adjusted padding */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-control::placeholder {
+        color: rgba(255,255,255,0.5);
+    }
+    .form-control:focus {
+      background-color: var(--form-input-focus-bg);
+      color: var(--form-input-text-color);
+      box-shadow: 0 0 0 0.2rem rgba(0,255,229,0.25); /* Focus shadow like button */
+      border-color: rgba(0,255,229,0.5);
+      outline: none;
+    }
+
+    .btn-submit-form { /* Renamed from btn-register for clarity */
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-weight: 600;
+      padding: 10px 30px; /* Adjusted padding */
+      border: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,255,229,0.25);
+      width: 100%; /* Make button full width in its column or use d-grid */
+      max-width: 250px; /* Max width for centered button */
+      margin-top: 10px; /* Space above button */
+    }
+
+    .btn-submit-form:hover {
+      background-color: var(--btn-primary-hover-bg);
+      color: var(--btn-primary-hover-text);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px rgba(0,255,229,0.4);
+    }
+    
+    /* Table styling */
+    .table-responsive {
+        border-radius: 10px; /* Rounded corners for the responsive wrapper */
+        overflow: hidden; /* Ensures content respects border-radius */
+    }
+    table.table { /* More specific selector */
+      background: var(--table-bg);
+      color: var(--table-text-color);
+      border-radius: 0; /* Table itself has no radius if wrapper has it */
+      margin-bottom: 0; /* Remove default table margin if wrapper handles spacing */
+    }
+    table.table th {
+      background: var(--table-header-bg);
+      color: #fff; /* Brighter text for headers */
+      font-weight: 600; /* Bolder headers */
+      border-bottom: 2px solid rgba(0,255,229,0.3) !important; /* Accent border */
+      border-top: none !important;
+    }
+    table.table td, table.table th {
+      vertical-align: middle;
+      padding: 0.9rem 1rem; /* Consistent padding */
+      border-color: rgba(255,255,255,0.1) !important; /* Lighter border for table cells */
+    }
+    table.table tbody tr:hover {
+        background-color: rgba(255,255,255,0.05); /* Subtle hover for rows */
+    }
+
+    #add { /* Address display styling */
+      color: var(--btn-primary-bg); /* Teal color */
+      font-weight: 600;
+    }
+    .address-display { /* Wrapper for the address paragraph */
+        color: #ccc;
+        margin-top: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Standard Navbar - Top Fixed with Glass Effect -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container"> <!-- Using .container for centered content -->
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-shield-alt"></i> <!-- Optional icon -->
+      Fake Product ID
+      <span class="brand-subtitle">through Blockchain</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#consumerHistoryNav" aria-controls="consumerHistoryNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="consumerHistoryNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li class="nav-item"><a href="manufacturer.html" class="nav-link"><i class="fas fa-industry"></i> Manufacturer</a></li>
+        <li class="nav-item"><a href="seller.html" class="nav-link"><i class="fas fa-store"></i> Seller</a></li>
+        <li class="nav-item"><a href="consumer.html" class="nav-link"><i class="fas fa-user-check"></i> Consumer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END Standard Navbar -->
+
+<!-- Main Content Sections -->
+<div class="container mt-5"> <!-- Main container for page content -->
+
+    <!-- Section for Input Form -->
+    <section class="form-section">
+      <h2 class="page-title">Consumer Product History</h2>
+      <h3 class="section-subtitle">Enter your Consumer Code to retrieve your purchase records.</h3>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="form-group mb-4">
+            <label for="consumerCode">Consumer Code</label>
+            <input type="text" class="form-control" id="consumerCode" placeholder="e.g., C001" name="consumerCode">
+          </div>
+          <div class="d-grid gap-2 col-8 mx-auto"> <!-- Centered button using d-grid -->
+             <button type="button" class="btn btn-submit-form" id="register">Get Products</button> <!-- Changed to type="button" if not submitting a form traditionally -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section for Displaying Products -->
+    <section class="form-section mb-5"> <!-- Added mb-5 for bottom spacing -->
+        <h3 class="section-subtitle">Products Purchased</h3>
+        <div class="table-responsive">
+          <table class="table table-striped"> <!-- Removed text-light as it's default now -->
+              <thead>
+                  <tr>
+                      <th>Product SN</th>
+                      <th>Seller Code</th>
+                      <th>Manufacturer Code</th>
+                  </tr>
+              </thead>
+              <tbody id="logdata">
+                  <!-- Data will be inserted here by consumerPurchaseHistory.js -->
+                  <!-- Example row for styling:
+                  <tr>
+                      <td>PROD12345</td>
+                      <td>SELL001</td>
+                      <td>MAN001</td>
+                  </tr>
+                  -->
+              </tbody>
+          </table>
+        </div>
+        <div class="text-center address-display">
+            <p>Your Blockchain Address is <b id="add"></b></p>
+        </div>
+    </section>
+
+</div> <!-- END Main container -->
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap 5 Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- jQuery (if your custom scripts explicitly require it - Bootstrap 5 doesn't) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <!-- Your custom JS files -->
+  <!-- IMPORTANT: Check js/main.js for conflicts if it's from the ftco template -->
+  <script src="js/main.js"></script> 
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/consumerPurchaseHistory.js"></script> <!-- Specific JS for this page -->
+
+  <script>
+    // Script to set active nav link (optional, but good for UX)
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('#consumerHistoryNav .nav-link');
+        let isPageActive = false;
+
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href').split("/").pop();
+            link.classList.remove('active'); 
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+                isPageActive = true;
+            }
+        });
+
+        // Fallback to 'Consumer' or 'Home' if no direct match or on a sub-page like consumerPurchaseHistory.html
+        if (!isPageActive) {
+            let fallbackLink;
+            if (currentPage === "consumerPurchaseHistory.html") { // If on this specific page
+                fallbackLink = document.querySelector('#consumerHistoryNav .nav-link[href="consumer.html"]');
+            }
+            if (!fallbackLink && (currentPage === "" || currentPage === "index.html")) { // General fallback to Home
+                 fallbackLink = document.querySelector('#consumerHistoryNav .nav-link[href="index.html"]');
+            }
+            if (fallbackLink) {
+                fallbackLink.classList.add('active');
+            }
+        }
+    });
+  </script>
+
+</body>
+</html>

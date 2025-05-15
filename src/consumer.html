@@ -339,34 +339,11 @@
   <script src="js/main.js"></script> <!-- This might have ftco specific JS, check for conflicts -->
   <script src="js/web3.min.js"></script>
   <script src="js/truffle-contract.js"></script>
-  <!-- <script src="js/sellerDataApp.js"></script> --> <!-- This was likely for seller page, remove if not needed for consumer -->
+  <script src="js/sellerDataApp.js"></script> <!-- This was likely for seller page, remove if not needed for consumer -->
   <!-- Add consumer-specific JS if any, e.g., js/consumerApp.js -->
 
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const currentPage = window.location.pathname.split("/").pop();
-        const navLinks = document.querySelectorAll('#consumerNav .nav-link'); // Target new navbar ID
-        let homeFallback = true;
-
-        navLinks.forEach(link => {
-            const linkPage = link.getAttribute('href').split("/").pop();
-            link.classList.remove('active'); // Ensure all are inactive first
-            if (linkPage === currentPage) {
-                link.classList.add('active');
-                homeFallback = false; 
-            }
-        });
-        
-        if (homeFallback && (currentPage === "" || currentPage === "index.html" || currentPage === "consumer.html")) {
-            // If on consumer.html itself or index, make 'Home' active or a specific 'Dashboard' link if you add one
-            const homeLink = document.querySelector('#consumerNav .nav-link[href="index.html"]');
-            if (homeLink) {
-                homeLink.classList.add('active');
-            }
-        }
-    });
-  </script>
+  
 
 </body>
 </html>

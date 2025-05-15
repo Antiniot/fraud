@@ -8,320 +8,194 @@
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     :root {
-      --primary-color: #0d6efd; /* Or #00ffe5 if you prefer the teal for underline */
-      --navbar-link-color: #f8f9fa;
-      --navbar-link-hover-color: var(--primary-color); /* Or #00ffe5 */
-      --brand-subtitle-color: #ffc107;
-      --form-input-bg: rgba(255, 255, 255, 0.1);
-      --form-input-focus-bg: rgba(255, 255, 255, 0.15); /* Subtle change on focus */
-      --form-input-text-color: #fff;
-      --form-label-color: #bbb; /* Slightly lighter for floating labels */
-      --btn-primary-bg: #00ffe5; 
-      --btn-primary-text: #000;
-      --btn-primary-hover-bg: #fff;
-      --btn-primary-hover-text: #111;
+      --primary-color: #00ffe5;
+      --navbar-bg: rgba(0, 0, 0, 0.8);
+      --text-white: #fff;
+      --label-color: #bbb;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #3c365a); /* Consistent gradient */
+      background: linear-gradient(135deg, #1f1c2c, #3c365a);
       min-height: 100vh;
-      padding-top: 85px; /* Adjusted for potentially taller navbar */
-      animation: slideFadeInPage 0.8s ease-out;
-      color: #fff; /* Default text color for page */
+      padding-top: 80px;
+      color: var(--text-white);
+      animation: fadeIn 0.8s ease-in-out;
     }
 
-    @keyframes slideFadeInPage {
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Navbar Styling - Consistent Glassmorphism with Underline Animation */
-    .navbar.fixed-top {
-      background-color: rgba(0, 0, 0, 0.8) !important; 
-      backdrop-filter: blur(12px); 
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
-      animation: fadeInDownNav 0.8s ease-out;
+    .navbar {
+      background-color: var(--navbar-bg);
+      backdrop-filter: blur(12px);
     }
-    @keyframes fadeInDownNav { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
 
     .navbar-brand {
-      color: #fff !important;
+      color: var(--text-white);
       font-weight: 600;
-      font-size: 1.5rem; 
     }
-    .navbar-brand i { 
-        margin-right: 8px;
-        color: var(--btn-primary-bg); 
-    }
-    .navbar-brand span.brand-subtitle { 
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: var(--brand-subtitle-color);
+
+    .navbar-brand span {
       display: block;
-      line-height: 1;
-      margin-top: -2px;
-    }
-    .navbar-nav .nav-link {
-      font-family: 'Poppins', sans-serif; 
-      font-weight: 500; 
-      font-size: 0.95rem; 
-      color: var(--navbar-link-color) !important; 
-      margin: 0 10px;
-      padding: 0.5rem 0; 
-      transition: color 0.3s ease, border-bottom-color 0.3s ease;
-      border-bottom: 2px solid transparent; 
-      position: relative;
-    }
-    .navbar-nav .nav-link i { 
-      margin-right: 6px;
-      opacity: 0.8;
-    }
-    .navbar-nav .nav-link:hover, 
-    .navbar-nav .nav-link.active { 
-      color: var(--navbar-link-hover-color) !important; 
-      border-bottom-color: var(--navbar-link-hover-color); 
-    }
-    .navbar-nav .nav-link:hover i,
-    .navbar-nav .nav-link.active i { 
-        opacity: 1;
-    }
-    .navbar-toggler { 
-        border-color: rgba(255,255,255,0.2) !important; 
-    }
-    .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      font-size: 0.75rem;
+      color: #ffc107;
     }
 
-    /* Page Title */
-    h2.page-title {
-      color: #fff;
-      font-weight: 600;
+    .nav-link {
+      color: var(--text-white) !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    h2 {
       text-align: center;
-      margin-bottom: 40px;
-      animation: zoomInTitle 0.7s ease-out 0.2s both; /* Delayed animation */
-      font-size: 2.5rem;
-    }
-    @keyframes zoomInTitle {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      margin-bottom: 30px;
+      font-weight: 600;
     }
 
-    /* Form Section Styling (from your original code) */
     .form-section {
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
+      backdrop-filter: blur(10px);
       border-radius: 15px;
-      padding: 35px 40px; /* Adjusted padding */
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      animation: slideUpForm 0.8s ease-out 0.4s both; /* Delayed animation */
-      max-width: 800px; /* Max width for form section */
-      margin-left: auto;
-      margin-right: auto;
-    }
-    @keyframes slideUpForm {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .form-floating > .form-control,
-    .form-floating > .form-select {
-        padding-top: 1.625rem; /* Default Bootstrap floating label padding */
-        padding-bottom: .625rem;
+    .form-floating > label {
+      color: var(--label-color);
     }
-    .form-floating > label { /* Ensure label is above when input has value */
-        color: var(--form-label-color);
-        padding: 1rem 0.75rem; /* Match Bootstrap's default floating label padding */
-    }
+
     .form-control {
-      background-color: var(--form-input-bg);
-      color: var(--form-input-text-color);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
       border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      /* padding: 1rem; /* Controlled by .form-floating now */
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
-    .form-control::placeholder { /* For non-floating inputs if any */
-        color: rgba(255,255,255,0.5);
-    }
+
     .form-control:focus {
-      outline: none;
-      box-shadow: 0 0 0 0.2rem rgba(0,255,229,0.25);
-      background-color: var(--form-input-focus-bg);
-      border-color: rgba(0,255,229,0.5);
-      color: var(--form-input-text-color); /* Ensure text color remains white on focus */
-    }
-    .form-floating > .form-control:focus ~ label,
-    .form-floating > .form-control:not(:placeholder-shown) ~ label {
-      color: var(--btn-primary-bg); /* Teal color for active/filled floating label */
-      opacity: 1; /* Ensure label is fully visible */
-      transform: scale(.85) translateY(-.5rem) translateX(.15rem); /* Bootstrap's default transform */
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--primary-color);
+      color: white;
     }
 
-
-    .btn-submit-form { /* Renamed from btn-register */
-      background-color: var(--btn-primary-bg);
-      color: var(--btn-primary-text);
+    .btn-submit-form {
+      background-color: var(--primary-color);
+      color: black;
+      font-weight: 600;
       border: none;
       padding: 10px 30px;
-      font-weight: 600;
       border-radius: 8px;
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0 4px 12px rgba(0,255,229,0.25);
-    }
-    .btn-submit-form:hover {
-      background-color: var(--btn-primary-hover-bg);
-      color: var(--btn-primary-hover-text);
-      transform: translateY(-2px);
-      box-shadow: 0 7px 18px rgba(0,255,229,0.4);
+      transition: 0.3s ease;
     }
 
-    .qr-code-section { /* Wrapper for QR code for better spacing */
-        margin-top: 30px;
-        margin-bottom: 30px;
-        animation: fadeInQr 0.7s ease-out 0.6s both; /* Delayed animation */
+    .btn-submit-form:hover {
+      background-color: white;
+      color: black;
+      transform: translateY(-2px);
     }
-    @keyframes fadeInQr {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .qr-code-section img {
-      max-width: 180px; /* Slightly smaller */
-      border-radius: 10px;
-      background: white;
-      padding: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    .qr-code-section .btn-download-qr { /* Specific class for download button */
-      background-color: transparent;
-      color: var(--btn-primary-bg);
-      border: 2px solid var(--btn-primary-bg);
-      padding: 8px 20px;
-      font-weight: 500;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    .qr-code-section .btn-download-qr:hover {
-        background-color: var(--btn-primary-bg);
-        color: var(--btn-primary-text);
-        transform: translateY(-2px);
+
+    .qr-code-section {
+      text-align: center;
+      margin-top: 30px;
     }
   </style>
 </head>
 
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <i class="fas fa-shield-alt"></i> 
-      Fake Product Identification
-      <span class="brand-subtitle">through Blockchain</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#addProductNav" aria-controls="addProductNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="addProductNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-        <li class="nav-item"><a href="manufacturer.html" class="nav-link"><i class="fas fa-industry"></i> Manufacturer</a></li>
-        <li class="nav-item"><a href="seller.html" class="nav-link"><i class="fas fa-store"></i> Seller</a></li>
-        <li class="nav-item"><a href="consumer.html" class="nav-link"><i class="fas fa-user-check"></i> Consumer</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Form Section -->
-<section class="container mt-5">
-  <h2 class="page-title">Add New Product</h2>
-  <div class="form-section">
-    <form id="addProductForm"> <!-- Added ID to form for potential JS targeting -->
-      <div class="row g-3 mb-3"> <!-- Reduced g-4 to g-3 and mb-4 to mb-3 for tighter spacing -->
-        <div class="col-md-6 form-floating">
-          <input type="text" class="form-control" id="manufacturerID" placeholder="Manufacturer ID" required>
-          <label for="manufacturerID">Manufacturer ID</label>
-        </div>
-        <div class="col-md-6 form-floating">
-          <input type="text" class="form-control" id="productName" placeholder="Product Name" required>
-          <label for="productName">Product Name</label>
-        </div>
-      </div>
-
-      <div class="row g-3 mb-3">
-        <div class="col-md-6 form-floating">
-          <input type="text" class="form-control" id="productSN" placeholder="Serial Number" required>
-          <label for="productSN">Product Serial Number</label>
-        </div>
-        <div class="col-md-6 form-floating">
-          <input type="text" class="form-control" id="productBrand" placeholder="Product Brand" required>
-          <label for="productBrand">Product Brand</label>
-        </div>
-      </div>
-
-      <div class="form-floating mb-4"> <!-- Increased mb for this single field -->
-        <input type="text" class="form-control" id="productPrice" placeholder="Product Price" required>
-        <label for="productPrice">Product Price (e.g., 100 USD)</label>
-      </div>
-
-      <div class="text-center mt-4"> <!-- Added mt-4 for spacing -->
-        <button type="button" class="btn btn-submit-form" onclick="submitProductAndFetchQR()">
-            <i class="fas fa-plus-circle me-2"></i>Add Product & Get QR
-        </button>
-      </div>
-    </form>
-  </div>
-
-  <!-- QR Code Section -->
-  <div class="text-center qr-code-section" id="qrSection" style="display: none;"> <!-- Initially hidden -->
-    <h4 class="text-light mb-3">Generated QR Code for Product</h4>
-    <img id="imgQR" src="" alt="QR Code for Product">
-    <div>
-      <button class="btn btn-download-qr mt-3" id="download" onclick="saveImage()">
-          <i class="fas fa-download me-2"></i>Download QR Code
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        Fake Product Identification
+        <span>through Blockchain</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="manufacturer.html">Manufacturer</a></li>
+          <li class="nav-item"><a class="nav-link" href="seller.html">Seller</a></li>
+          <li class="nav-item"><a class="nav-link" href="consumer.html">Consumer</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container form-section">
+    <h2>Add Product</h2>
+    <div class="row g-3">
+      <div class="col-md-6 form-floating">
+        <input type="text" class="form-control" id="manufacturerID" placeholder="Manufacturer ID">
+        <label for="manufacturerID">Manufacturer ID</label>
+      </div>
+      <div class="col-md-6 form-floating">
+        <input type="text" class="form-control" id="productName" placeholder="Product Name">
+        <label for="productName">Product Name</label>
+      </div>
+      <div class="col-md-6 form-floating">
+        <input type="text" class="form-control" id="productSN" placeholder="Product SN">
+        <label for="productSN">Product SN</label>
+      </div>
+      <div class="col-md-6 form-floating">
+        <input type="text" class="form-control" id="productBrand" placeholder="Product Brand">
+        <label for="productBrand">Product Brand</label>
+      </div>
+      <div class="col-md-6 form-floating">
+        <input type="text" class="form-control" id="productPrice" placeholder="Product Price">
+        <label for="productPrice">Product Price</label>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <button class="btn btn-submit-form" onclick="fetchQR()">Add the Product</button>
     </div>
   </div>
-</section>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/web3.min.js"></script>
-<script src="js/truffle-contract.js"></script>
-<script src="js/productApp.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+  <div class="container qr-code-section">
+    <img id="imgQR" hidden src="" alt="QR Code">
+    <div class="mt-3">
+      <button class="btn btn-submit-form" hidden id="download" onclick="saveImage()">Download QR Code</button>
+    </div>
+  </div>
 
-<script>
-  var src;
-  var qrValue;
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+  <script>
+    let src;
 
-  function fetchQR() {
-    qrValue = document.getElementById('productSN').value;
-    if (!qrValue) return alert("Enter Product Serial Number first!");
+    function fetchQR() {
+      const qrValue = document.getElementById('productSN').value;
+      const qrImage = document.getElementById('imgQR');
+      const downloadBtn = document.getElementById('download');
 
-    const img = document.getElementById("imgQR");
-    src = img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
-    
-    img.removeAttribute('hidden');
-    document.getElementById("download").removeAttribute('hidden');
-  }
+      if (!qrValue) return alert("Please enter Product SN to generate QR Code.");
 
-  function saveImage() {
-    saveAs(src, qrValue);
-    document.getElementById("imgQR").setAttribute('hidden', 'hidden');
-    document.getElementById("download").setAttribute('hidden', 'hidden');
-  }
-</script>
+      src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
+      qrImage.src = src;
+      qrImage.hidden = false;
+      downloadBtn.hidden = false;
+    }
 
+    function saveImage() {
+      const qrValue = document.getElementById('productSN').value;
+      saveAs(src, `${qrValue}.png`);
+    }
+  </script>
 </body>
 </html>

@@ -261,47 +261,12 @@
   </div>
 </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery is loaded before Bootstrap bundle by default in many Bootstrap 5 setups, but Bootstrap 5 components don't require it. -->
-    <!-- If your sellerApp.js or main.js relies on jQuery, keep it. Otherwise, it might be removable. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    
-    <!-- Old Popper and Bootstrap JS - Bootstrap Bundle already includes Popper. These are likely redundant or for an older Bootstrap version. -->
-    <!-- <script src="js/popper.js"></script> -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
-    
-    <script src="js/main.js"></script> <!-- Check this for conflicts with Bootstrap 5 navbar JS -->
-    <script src="js/web3.min.js"></script>
-    <script src="js/truffle-contract.js"></script>
-    <script src="js/sellerApp.js"></script> <!-- This should handle the form submission logic -->
-
-    <script>
-      // Script to set active nav link
-      document.addEventListener("DOMContentLoaded", function() {
-          const currentPage = window.location.pathname.split("/").pop();
-          const navLinks = document.querySelectorAll('#addSellerNav .nav-link');
-          let isPageActive = false;
-
-          navLinks.forEach(link => {
-              const linkPage = link.getAttribute('href').split("/").pop();
-              link.classList.remove('active'); 
-              if (linkPage === currentPage) {
-                  link.classList.add('active');
-                  isPageActive = true;
-              }
-          });
-
-          // Fallback: if on addSeller.html, make Manufacturer link active
-          // (Since adding a seller is typically a manufacturer's action related to their sellers)
-          if (!isPageActive && currentPage === "addSeller.html") {
-               const manufacturerLink = document.querySelector('#addSellerNav .nav-link[href="manufacturer.html"]');
-               if (manufacturerLink) manufacturerLink.classList.add('active');
-          } else if (!isPageActive && (currentPage === "" || currentPage === "index.html")) {
-               const homeLink = document.querySelector('#addSellerNav .nav-link[href="index.html"]');
-               if (homeLink) homeLink.classList.add('active');
-          }
-      });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/sellerApp.js"></script>
 </body>
 </html>

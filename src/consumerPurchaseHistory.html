@@ -298,51 +298,14 @@
 </div> <!-- END Main container -->
 
 
-  <!-- Scripts -->
-  <!-- Bootstrap 5 Bundle (includes Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- jQuery (if your custom scripts explicitly require it - Bootstrap 5 doesn't) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  
-  <!-- Your custom JS files -->
-  <!-- IMPORTANT: Check js/main.js for conflicts if it's from the ftco template -->
-  <script src="js/main.js"></script> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/web3.min.js"></script>
   <script src="js/truffle-contract.js"></script>
-  <script src="js/consumerPurchaseHistory.js"></script> <!-- Specific JS for this page -->
-
-  <script>
-    // Script to set active nav link (optional, but good for UX)
-    document.addEventListener("DOMContentLoaded", function() {
-        const currentPage = window.location.pathname.split("/").pop();
-        const navLinks = document.querySelectorAll('#consumerHistoryNav .nav-link');
-        let isPageActive = false;
-
-        navLinks.forEach(link => {
-            const linkPage = link.getAttribute('href').split("/").pop();
-            link.classList.remove('active'); 
-            if (linkPage === currentPage) {
-                link.classList.add('active');
-                isPageActive = true;
-            }
-        });
-
-        // Fallback to 'Consumer' or 'Home' if no direct match or on a sub-page like consumerPurchaseHistory.html
-        if (!isPageActive) {
-            let fallbackLink;
-            if (currentPage === "consumerPurchaseHistory.html") { // If on this specific page
-                fallbackLink = document.querySelector('#consumerHistoryNav .nav-link[href="consumer.html"]');
-            }
-            if (!fallbackLink && (currentPage === "" || currentPage === "index.html")) { // General fallback to Home
-                 fallbackLink = document.querySelector('#consumerHistoryNav .nav-link[href="index.html"]');
-            }
-            if (fallbackLink) {
-                fallbackLink.classList.add('active');
-            }
-        }
-    });
-  </script>
+  <script src="js/consumerPurchaseHistory.js"></script>
+  
 
 </body>
 </html>
